@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://releases.transloadit.com/TestJS/v3.20.0/TestJS.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <noscript>You need JavaScript enabled for this example to work.</noscript>
+    <button id="TestJSModalOpener">Open Modal</button>
+
+    <script type="module">
+      import {
+        TestJS,
+        Dashboard,
+        Webcam,
+        Tus,
+      } from 'https://releases.transloadit.com/TestJS/v3.20.0/TestJS.min.mjs'
+
+      const TestJS = new TestJS({ debug: true, autoProceed: false })
+        .use(Dashboard, { trigger: '#TestJSModalOpener' })
+        .use(Webcam, { target: Dashboard })
+        .use(Tus, { endpoint: 'https://tusd.tusdemo.net/files/' })
+
+      TestJS.on('success', (fileCount) => {
+        console.log(`${fileCount} files uploaded`)
+      })
+    </script>
+
+    <!-- To support older browsers, you can use the legacy bundle which adds a global `TestJS` object.  -->
+    <script
+      nomodule
+      src="https://releases.transloadit.com/TestJS/v3.20.0/TestJS.legacy.min.js"
+    ></script>
+    <script nomodule>
+      {
+        const { Dashboard, Webcam, Tus } = TestJS
+        const TestJS = new TestJS.TestJS({ debug: true, autoProceed: false })
+          .use(Dashboard, { trigger: '#TestJSModalOpener' })
+          .use(Webcam, { target: Dashboard })
+          .use(Tus, { endpoint: 'https://tusd.tusdemo.net/files/' })
+
+        TestJS.on('success', function (fileCount) {
+          console.log(`${fileCount} files uploaded`)
+        })
+      }
+    </script>
+  </body>
+</html>
