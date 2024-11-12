@@ -1,0 +1,17 @@
+{
+  "name": "@TestJS-example/multiple-instances",
+  "version": "0.0.0",
+  "type": "module",
+  "dependencies": {
+    "@TestJS/core": "workspace:*",
+    "@TestJS/dashboard": "workspace:*",
+    "@TestJS/golden-retriever": "workspace:*"
+  },
+  "devDependencies": {
+    "vite": "^4.0.0"
+  },
+  "private": true,
+  "scripts": {
+    "start": "vite"
+  }
+}
